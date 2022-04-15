@@ -1,0 +1,49 @@
+#include "main.h"
+/**
+ * _strchrlen - calculate the length until a given character
+ * @str: the string
+ * @c: the given character
+ * Return: -1 if the character is not find
+ */
+int _strchrlen(char *str, char c)
+{
+	int len;
+
+	if (str == NULL)
+		return (-1);
+
+	for (len = 0; str[len] && c; len++)
+	{
+		if (str[len] == c)
+			return (len);
+	}
+}
+/**
+ * read_line - read the file and copy a string into a buffer
+ * line
+ * n
+ * stream
+ * return:
+ */
+char *read_line(char **line, size_t *n, FILE *stream)
+{
+	char buffer[BUF_SIZE + 1];
+	int ret, len;
+
+	ret = read(STDIN_FILENO, buffer, BUF_SIZE);
+	buffer[ret] = NULL;
+	len = _strchrlen(buffer, '\n');
+	if (len == -1)
+	{
+		//  Ajouter buffer a la ligne et continuer a lire
+		/* _strcat(\n, buffer);
+		*/
+	}
+	else
+	{
+		if (*line)
+		{
+			// Rejoindre ancien buffer avec nouveau
+			/*newbuf = malloc(2 * line * sizeof(char));
+			_strcat(line, newbuff);
+			 *line = 2 * line;
